@@ -35,17 +35,18 @@ export const DOCTOR_INFO = {
 
 export interface NavItem {
   label: string;
+  shortLabel?: string;
   href: string;
   sectionId?: string;
 }
 
 export const NAV_ITEMS: readonly NavItem[] = [
-  { label: 'Início', href: '/', sectionId: 'inicio' },
-  { label: 'Lipedema & Sintomas', href: '/#atuacao', sectionId: 'atuacao' },
-  { label: 'Protocolos Clínicos', href: '/#procedimentos', sectionId: 'procedimentos' },
-  { label: 'Sobre o Médico', href: '/#sobre', sectionId: 'sobre' },
-  { label: 'Artigos & Conteúdos', href: '/conteudos' },
-  { label: 'Locais & Contato', href: '/#contato', sectionId: 'contato' },
+  { label: 'Início', shortLabel: 'Início', href: '/', sectionId: 'inicio' },
+  { label: 'Lipedema & Sintomas', shortLabel: 'Lipedema', href: '/#atuacao', sectionId: 'atuacao' },
+  { label: 'Protocolos Clínicos', shortLabel: 'Protocolos', href: '/#procedimentos', sectionId: 'procedimentos' },
+  { label: 'Sobre o Médico', shortLabel: 'Sobre', href: '/#sobre', sectionId: 'sobre' },
+  { label: 'Artigos & Conteúdos', shortLabel: 'Conteúdos', href: '/conteudos' },
+  { label: 'Locais & Contato', shortLabel: 'Contato', href: '/#contato', sectionId: 'contato' },
 ] as const;
 
 export function contentSlug(title: string) {

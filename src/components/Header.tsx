@@ -90,10 +90,10 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/[0.05] ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/[0.06] bg-[#0c0e12] ${
           scrolled
-            ? 'bg-[#0c0e12]/98 backdrop-blur-xl py-2.5 sm:py-3 shadow-[0_12px_35px_rgba(0,0,0,0.7)]'
-            : 'bg-[#0c0e12] py-3 sm:py-3.5 shadow-[0_6px_25px_rgba(0,0,0,0.4)]'
+            ? 'py-2.5 sm:py-3 shadow-[0_12px_35px_rgba(0,0,0,0.75)]'
+            : 'py-3 sm:py-3.5 shadow-[0_6px_25px_rgba(0,0,0,0.45)]'
         }`}
       >
         <div className="container-wide">
@@ -113,7 +113,7 @@ export function Header() {
               />
             </Link>
 
-            {/* Desktop Navigation Links — Luxury Capsule Bar */}
+            {/* Desktop Navigation Links — Luxury Capsule Bar (Strictly Single-Line) */}
             <nav className="hidden lg:flex items-center gap-1.5 p-1 rounded-full bg-white/[0.03] border border-white/[0.05] backdrop-blur-md">
               {NAV_ITEMS.map((item) => {
                 const isHomeSection = location.pathname === '/' && item.sectionId;
@@ -126,13 +126,13 @@ export function Header() {
                     key={item.label}
                     to={item.href}
                     onClick={(e) => handleLinkClick(e, item)}
-                    className={`px-3.5 py-1.5 rounded-full text-[13px] font-medium tracking-wide transition-all duration-200 relative ${
+                    className={`px-3.5 py-1.5 rounded-full text-[13px] font-medium tracking-wide whitespace-nowrap transition-all duration-200 relative ${
                       isActive
                         ? 'bg-gradient-to-r from-gold/25 via-gold/15 to-gold/25 text-gold-light font-bold border border-gold/30 shadow-[0_0_15px_rgba(197,168,128,0.2)]'
                         : 'text-slate-300 hover:text-white hover:bg-white/[0.05] border border-transparent'
                     }`}
                   >
-                    <span>{item.label}</span>
+                    <span className="whitespace-nowrap">{item.shortLabel || item.label}</span>
                   </Link>
                 );
               })}
