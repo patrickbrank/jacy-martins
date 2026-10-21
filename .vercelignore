@@ -1,0 +1,6 @@
+node_modules
+dist
+dist-ssr
+.vercel
+public/posts
+dist/posts
