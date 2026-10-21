@@ -90,10 +90,10 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-0 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/[0.05] ${
           scrolled
-            ? 'bg-[#0c0e12]/95 backdrop-blur-md py-2.5 sm:py-3 shadow-[0_14px_40px_rgba(0,0,0,0.95)]'
-            : 'bg-[#0c0e12]/70 backdrop-blur-sm py-3 sm:py-4'
+            ? 'bg-[#0c0e12]/98 backdrop-blur-xl py-2.5 sm:py-3 shadow-[0_12px_35px_rgba(0,0,0,0.7)]'
+            : 'bg-[#0c0e12] py-3 sm:py-3.5 shadow-[0_6px_25px_rgba(0,0,0,0.4)]'
         }`}
       >
         <div className="container-wide">
@@ -103,7 +103,7 @@ export function Header() {
             <Link
               to="/"
               onClick={(e) => handleLinkClick(e, { href: '/' })}
-              className="flex items-center group transition-opacity hover:opacity-90"
+              className="flex items-center group transition-opacity hover:opacity-90 flex-shrink-0"
               aria-label="Dr. Jacy Martins Jr — Medicina Integrativa & Lipedema"
             >
               <img
@@ -113,8 +113,8 @@ export function Header() {
               />
             </Link>
 
-            {/* Desktop Navigation Links — Crisp off-white & champagne gold */}
-            <nav className="hidden lg:flex items-center gap-7 text-[13px] font-medium tracking-wide">
+            {/* Desktop Navigation Links — Luxury Capsule Bar */}
+            <nav className="hidden lg:flex items-center gap-1.5 p-1 rounded-full bg-white/[0.03] border border-white/[0.05] backdrop-blur-md">
               {NAV_ITEMS.map((item) => {
                 const isHomeSection = location.pathname === '/' && item.sectionId;
                 const isActive = isHomeSection
@@ -126,26 +126,25 @@ export function Header() {
                     key={item.label}
                     to={item.href}
                     onClick={(e) => handleLinkClick(e, item)}
-                    className={`transition-all py-1 relative ${
-                      isActive ? 'text-gold-light font-bold' : 'text-slate-200/90 hover:text-white'
+                    className={`px-3.5 py-1.5 rounded-full text-[13px] font-medium tracking-wide transition-all duration-200 relative ${
+                      isActive
+                        ? 'bg-gradient-to-r from-gold/25 via-gold/15 to-gold/25 text-gold-light font-bold border border-gold/30 shadow-[0_0_15px_rgba(197,168,128,0.2)]'
+                        : 'text-slate-300 hover:text-white hover:bg-white/[0.05] border border-transparent'
                     }`}
                   >
-                    {item.label}
-                    {isActive && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-gold-light to-gold rounded-full" />
-                    )}
+                    <span>{item.label}</span>
                   </Link>
                 );
               })}
             </nav>
 
-            {/* Desktop CTA Action */}
+            {/* Desktop CTA Action — Noble Champagne Gold Capsule */}
             <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#dfc79b] via-[#c5a880] to-[#b09062] hover:brightness-105 text-graphite-950 transition-all shadow-gold-sm active:scale-95 whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#dfc79b] via-[#c5a880] to-[#b09062] hover:brightness-105 text-[#0c0e12] transition-all shadow-[0_4px_20px_rgba(197,168,128,0.3)] hover:shadow-[0_6px_25px_rgba(197,168,128,0.45)] hover:scale-[1.02] active:scale-95 whitespace-nowrap"
               >
                 <span>Agendar Consulta</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -153,7 +152,7 @@ export function Header() {
             </div>
 
             {/* Mobile Actions: Direct Schedule Pill + High-Contrast Tactile Menu Pill */}
-            <div className="flex lg:hidden items-center gap-2">
+            <div className="flex lg:hidden items-center gap-2 flex-shrink-0">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -167,7 +166,7 @@ export function Header() {
               <button
                 type="button"
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border-0 bg-white/[0.08] hover:bg-white/[0.14] text-white transition-all shadow-sm active:scale-95 cursor-pointer"
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.06] hover:bg-white/[0.12] text-white transition-all shadow-sm active:scale-95 cursor-pointer"
                 aria-label={menuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
                 aria-expanded={menuOpen}
               >
